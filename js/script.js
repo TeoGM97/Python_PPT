@@ -2,6 +2,8 @@
 const dino = document.getElementById("dino");
 const cactus = document.getElementById("cactus");
 
+alert("Juego de Google Chrome. V1")
+
 function jump () {
     if (dino.classList != "jump") {
         dino.classList.add("jump");
