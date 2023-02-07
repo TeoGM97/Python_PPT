@@ -1,7 +1,7 @@
 #Rock Paper Scissors Game
 
 user_option = input('Rock, Papaer o Scissors? => ')
-user_option = user_option.lower
+user_option = user_option.lower()
 pc_option = 'rock'
 
 #Tie Validation
