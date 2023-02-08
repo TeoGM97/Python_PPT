@@ -1,8 +1,24 @@
 #Rock Paper Scissors Game
+import random
 
+#Tuple of options
+options = ('rock', 'paper', 'scissors')
+
+#Input user option
 user_option = input('Rock, Papaer o Scissors? => ')
+#Standarize input
 user_option = user_option.lower()
-pc_option = 'rock'
+
+if not user_option in options:
+    print('Are you okay?')
+
+#Random selection of pc in options tuple
+pc_option = random.choice(options)
+
+#Show options in screen
+print('User Option =>', user_option)
+print('PC Option =>', pc_option)
+
 
 #Tie Validation
 if user_option == pc_option:
