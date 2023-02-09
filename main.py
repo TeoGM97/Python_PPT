@@ -10,17 +10,24 @@ user_wins = 0
 rounds = 1
 
 #Loop to validate who wins 2 times
-while pc_wins or user_wins < 2:
+while True:
+
+    print('--' * 10)
     print('*' * 10)
     print('ROUND', rounds)
     print('*' * 10)
     print('  ')
+
+    #Display of wins
+    print('USER WINS', user_wins)
+    print('PC WINS', pc_wins)
 
     #Input user option
     user_option = input('Rock, Papaer o Scissors? => ')
     #Standarize input
     user_option = user_option.lower()
 
+    #No valid option message
     if not user_option in options:
         print('  ')
         print('=> Are you okay? ')
@@ -37,8 +44,11 @@ while pc_wins or user_wins < 2:
     #Tie Validation
     if user_option == pc_option:
         print('Tie')
+        continue
+
     #Game Logic (Win and Lose)
-    #User uses Rock vs Scissors and Paper
+
+    #User uses Rock vs Scissors or Paper
     elif user_option == 'rock':
         if pc_option == 'scissors':
             print('  ')
@@ -61,7 +71,7 @@ while pc_wins or user_wins < 2:
             #+1 victory to pc
             pc_wins += 1
 
-    #User uses Paper vs Rock and Scissors
+    #User uses Paper vs Rock or Scissors
     elif user_option == 'paper':
         if pc_option == 'rock':
             print('  ')
@@ -84,7 +94,7 @@ while pc_wins or user_wins < 2:
             #+1 victory to pc
             pc_wins += 1
 
-    #User uses Scissors vs Paper and Rock
+    #User uses Scissors vs Paper or Rock
     elif user_option == 'scissors':
         if pc_option == 'paper':
             print('  ')
@@ -106,5 +116,15 @@ while pc_wins or user_wins < 2:
             print('  ')
             #+1 victory to pc
             pc_wins += 1
-    #Add 1 round to round counter
+
+    #Defeat message
+    if pc_wins == 2:
+        print('💀DEFEAT💀')
+        break
+
+    # Victory message
+    if user_wins == 2:
+        print('🍻VICTORY🍻')
+        break
+
     rounds += 1
