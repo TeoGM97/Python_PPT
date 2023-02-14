@@ -1,9 +1,7 @@
 #Rock Paper Scissors Game
 import random
 
-#Victories and rounds counters
-pc_wins = 0
-user_wins = 0
+#Rounds counter
 rounds = 1
 
 #Options function
@@ -35,30 +33,11 @@ def choose_options():
 
     return user_option, pc_option
 
-#Loop to validate who wins 2 times
-while True:
-
-    print('--' * 10)
-    print('*' * 10)
-    print('ROUND', rounds)
-    print('*' * 10)
-    print('  ')
-
-    #Display of wins
-    print('USER WINS', user_wins)
-    print('PC WINS', pc_wins)
-
-    rounds += 1
-
-    #Function with user and pc option
-    user_option, pc_option = choose_options()
-
+#Function with game rules
+def check_rules(user_option, pc_option, user_wins, pc_wins):
     #Tie Validation
     if user_option == pc_option:
         print('Tie')
-        continue
-
-    #Game Logic (Win and Lose)
 
     #User uses Rock vs Scissors or Paper
     elif user_option == 'rock':
@@ -129,13 +108,40 @@ while True:
             #+1 victory to pc
             pc_wins += 1
 
-    #Defeat message
-    if pc_wins == 2:
-        print('💀DEFEAT💀')
-        break
+#Main Function to run the game
+def run_game():
+    #Victories
+    pc_wins = 0
+    user_wins = 0
 
-    # Victory message
-    if user_wins == 2:
-        print('🍻VICTORY🍻')
-        break
+    #Loop to validate who wins 2 times
+    while True:
+
+        print('--' * 10)
+        print('*' * 10)
+        print('ROUND', rounds)
+        print('*' * 10)
+        print('  ')
+
+        #Display of wins
+        print('USER WINS', user_wins)
+        print('PC WINS', pc_wins)
+
+        rounds += 1
+
+        #Function with user and pc option
+        user_option, pc_option = choose_options()
+
+        #Function with game rules
+        check_rules(user_option, pc_option)
+
+        #Defeat message
+        if pc_wins == 2:
+            print('💀DEFEAT💀')
+            break
+
+        # Victory message
+        if user_wins == 2:
+            print('🍻VICTORY🍻')
+            break
 
