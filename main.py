@@ -1,9 +1,6 @@
 #Rock Paper Scissors Game
 import random
 
-#Rounds counter
-rounds = 1
-
 #Options function
 def choose_options():
     #Tuple of options
@@ -108,15 +105,19 @@ def check_rules(user_option, pc_option, user_wins, pc_wins):
             #+1 victory to pc
             pc_wins += 1
 
+    return user_wins, pc_wins
+
 #Main Function to run the game
 def run_game():
     #Victories
     pc_wins = 0
     user_wins = 0
 
+    #Rounds counter
+    rounds = 1
+
     #Loop to validate who wins 2 times
     while True:
-
         print('--' * 10)
         print('*' * 10)
         print('ROUND', rounds)
@@ -126,14 +127,14 @@ def run_game():
         #Display of wins
         print('USER WINS', user_wins)
         print('PC WINS', pc_wins)
-
         rounds += 1
 
         #Function with user and pc option
         user_option, pc_option = choose_options()
-
         #Function with game rules
-        check_rules(user_option, pc_option)
+        user_wins, pc_wins = check_rules(user_option, pc_option, user_wins, pc_wins)
+
+
 
         #Defeat message
         if pc_wins == 2:
@@ -145,3 +146,5 @@ def run_game():
             print('🍻VICTORY🍻')
             break
 
+#def check_winner():
+run_game()
