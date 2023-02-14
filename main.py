@@ -107,6 +107,19 @@ def check_rules(user_option, pc_option, user_wins, pc_wins):
 
     return user_wins, pc_wins
 
+#Function to check the winner
+def check_winner(user_wins, pc_wins):
+    #Defeat message
+    if pc_wins == 2:
+        print('💀DEFEAT💀')
+        print('  ')
+        exit()
+    #Victory message
+    elif user_wins == 2:
+        print('🍻VICTORY🍻')
+        print('  ')
+        exit()
+
 #Main Function to run the game
 def run_game():
     #Victories
@@ -133,18 +146,8 @@ def run_game():
         user_option, pc_option = choose_options()
         #Function with game rules
         user_wins, pc_wins = check_rules(user_option, pc_option, user_wins, pc_wins)
+        #Function with winner check
+        check_winner(user_wins, pc_wins)
 
 
-
-        #Defeat message
-        if pc_wins == 2:
-            print('💀DEFEAT💀')
-            break
-
-        # Victory message
-        if user_wins == 2:
-            print('🍻VICTORY🍻')
-            break
-
-#def check_winner():
 run_game()
