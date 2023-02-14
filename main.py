@@ -1,13 +1,39 @@
 #Rock Paper Scissors Game
 import random
 
-#Tuple of options
-options = ('rock', 'paper', 'scissors')
-
 #Victories and rounds counters
 pc_wins = 0
 user_wins = 0
 rounds = 1
+
+#Options function
+def choose_options():
+    #Tuple of options
+    options = ('rock', 'paper', 'scissors')
+
+    #Input user option
+    user_option = input('Rock, Papaer o Scissors? => ')
+    #Standarize input
+    user_option = user_option.lower()
+
+    #No valid option message
+    if not user_option in options:
+        print('  ')
+        print('=> Are you okay? ')
+        #continue
+        #Si elije una opcion no valida, retorne none
+        return None, None
+
+    #Random selection of pc in options tuple
+    pc_option = random.choice(options)
+
+    #Show options in screen
+    print('  ')
+    print('User Option =>', user_option)
+    print('PC Option =>', pc_option)
+    print('  ')
+
+    return user_option, pc_option
 
 #Loop to validate who wins 2 times
 while True:
@@ -22,24 +48,10 @@ while True:
     print('USER WINS', user_wins)
     print('PC WINS', pc_wins)
 
-    #Input user option
-    user_option = input('Rock, Papaer o Scissors? => ')
-    #Standarize input
-    user_option = user_option.lower()
+    rounds += 1
 
-    #No valid option message
-    if not user_option in options:
-        print('  ')
-        print('=> Are you okay? ')
-
-    #Random selection of pc in options tuple
-    pc_option = random.choice(options)
-
-    #Show options in screen
-    print('  ')
-    print('User Option =>', user_option)
-    print('PC Option =>', pc_option)
-    print('  ')
+    #Function with user and pc option
+    user_option, pc_option = choose_options()
 
     #Tie Validation
     if user_option == pc_option:
@@ -127,4 +139,3 @@ while True:
         print('🍻VICTORY🍻')
         break
 
-    rounds += 1
